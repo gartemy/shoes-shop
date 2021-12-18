@@ -91,7 +91,7 @@ export default {
   width: 455px;
   position: absolute;
   top: 0;
-  right: -4.5%;
+  right: 6.4%;
   z-index: 2;
 }
 

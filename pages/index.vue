@@ -9,7 +9,7 @@
           </div>
           <div class="search-form__item-option">
             <input type="text" v-model="search">
-            <span v-if="search"><img src="../static/clear.svg" alt="" @click="search = ''"></span>
+            <span v-if="search"><img src="../static/clear.svg" alt="" @click="clearSearch()"></span>
           </div>
         </div>
 
@@ -42,14 +42,14 @@
         </div>
 
         <div class="search-form__item">
-          <button>Apply</button>
+          <button @click="searchProduct()">Apply</button>
         </div>
       </div>
 
       <div class="bestsellers">
         <h1>Bestsellers: 34</h1>
         <div class="bestsellers__items">
-          <bestseller v-for="bestseller in bestsellers" :key="bestseller.id" :bestseller="bestseller"></bestseller>
+          <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller"></bestseller>
         </div>
       </div>
     </div>
@@ -65,6 +65,7 @@ export default {
   data() {
     return {
       search: '',
+      foundProducts: [],
       bestsellers: [
         {id: 1, icon: 'kids.png', title: 'Converse Kids 70', price: 49.99, selected: false},
         {id: 2, icon: 'chuck.png', title: 'Converse Chuck 70', price: 49.99, selected: false},
@@ -84,6 +85,25 @@ export default {
         {id: 2, value: 'Bestsellers'},
         {id: 3, value: 'Bestsellers'},
       ],
+    }
+  },
+  computed: {
+    getBestsellers() {
+      if (!this.foundProducts.length) {
+        return this.foundProducts = this.bestsellers
+      } else {
+        return this.foundProducts
+      }
+    }
+  },
+  methods: {
+    searchProduct() {
+      this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search))
+      return this.foundProducts
+    },
+    clearSearch() {
+      this.search = ''
+      this.foundProducts = this.bestsellers
     }
   }
 }

@@ -56,7 +56,7 @@ button {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 15px;
-  position: relative;
+
 }
 
 .navbar {
