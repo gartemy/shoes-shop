@@ -46,10 +46,10 @@
         </div>
       </div>
 
-      <div class="bestsellers">
+      <div class="bestsellers" :class="{found: found}">
         <h1>Bestsellers: 34</h1>
         <div class="bestsellers__items">
-          <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller"></bestseller>
+          <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller" :found="found"></bestseller>
         </div>
       </div>
     </div>
@@ -66,12 +66,37 @@ export default {
     return {
       search: '',
       foundProducts: [],
+      found: false,
       bestsellers: [
         {id: 1, icon: 'kids.png', title: 'Converse Kids 70', price: 49.99, selected: false},
         {id: 2, icon: 'chuck.png', title: 'Converse Chuck 70', price: 49.99, selected: false},
-        {id: 3, icon: 'chuck-high.png', title: 'Converse Chuck 70 Renew High Top', price: 50.99, oldPrice: 84.99, sale: 40, selected: false},
-        {id: 4, icon: 'pro-chuck.png', title: 'Converse Pro Chuck 80', price: 64.99, oldPrice: 99.99, sale: 35, selected: false},
-        {id: 5, icon: 'winter.png', title: 'Converse Winter Chuck 70', price: 79.99, oldPrice: 99.99, sale: 20, selected: false},
+        {
+          id: 3,
+          icon: 'chuck-high.png',
+          title: 'Converse Chuck 70 Renew High Top',
+          price: 50.99,
+          oldPrice: 84.99,
+          sale: 40,
+          selected: false
+        },
+        {
+          id: 4,
+          icon: 'pro-chuck.png',
+          title: 'Converse Pro Chuck 80',
+          price: 64.99,
+          oldPrice: 99.99,
+          sale: 35,
+          selected: false
+        },
+        {
+          id: 5,
+          icon: 'winter.png',
+          title: 'Converse Winter Chuck 70',
+          price: 79.99,
+          oldPrice: 99.99,
+          sale: 20,
+          selected: false
+        },
         {id: 6, icon: 'winter-black.png', title: 'Converse Winter Chuck 70 Full Black', price: 129.99, selected: false},
         {id: 7, icon: 'winter-white.png', title: 'Converse Winter Chuck 70 Black/White', price: 99.99, selected: false},
       ],
@@ -99,10 +124,16 @@ export default {
   methods: {
     searchProduct() {
       this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search))
+      if (!this.foundProducts.length) {
+        this.found = false
+      } else {
+        this.found = true
+      }
       return this.foundProducts
     },
     clearSearch() {
       this.search = ''
+      this.found = false
       this.foundProducts = this.bestsellers
     }
   }
@@ -110,6 +141,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.found {
+
+  h1 {
+    position: relative !important;
+    margin-bottom: 40px;
+  }
+
+  div {
+    padding-top: 0!important;
+  }
+
+}
 
 .search-form {
   display: flex;
@@ -185,7 +229,7 @@ export default {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1429px) {
   .bestsellers__items {
     padding-top: 150px;
   }

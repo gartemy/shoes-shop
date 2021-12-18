@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <div v-if="isOpen" class="background" @click="isOpen = false"></div>
+    <div v-if="isOpen" class="background" @click="openBasket()"></div>
     <div class="container">
-      <nav class="navbar">
+      <nav class="navbar" :class="{border: isOpen}">
         <nuxt-link :to="'/'" class="navbar-brand">
           <img src="../static/logo.png" alt="">
         </nuxt-link>
@@ -11,7 +11,7 @@
           <li class="nav-item" v-for="item in items" :key="item.id" :class="{active: item.isActive}">
             <nuxt-link class="nav-link" :to="item.link">{{ item.title }}</nuxt-link>
           </li>
-          <li class="nav-item" @click="isOpen = !isOpen" :class="{active: isOpen}">
+          <li class="nav-item" @click="openBasket()" :class="{active: isOpen}">
             <nuxt-link class="nav-link" :to="'/'" v-if="basketCount !== 0">Basket({{basketCount}})</nuxt-link>
             <nuxt-link class="nav-link" :to="'/'" v-else>Basket</nuxt-link>
           </li>
@@ -44,11 +44,25 @@ export default {
     basketCount() {
       return this.$store.state.cartItems.length
     }
+  },
+  methods: {
+    openBasket() {
+      this.isOpen = !this.isOpen
+      if (this.isOpen && window.innerHeight > 782) {
+        document.querySelector('html').style.overflow = 'hidden'
+      } else {
+        document.querySelector('html').style.overflow = 'auto'
+      }
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.border {
+  border: none!important;
+}
 
 .background {
   position: absolute;
@@ -62,7 +76,6 @@ export default {
 
 .navbar {
   border-bottom: 1px solid #BDBDBD;
-  z-index: 100;
   padding: 38px 0;
 
   &-nav {
@@ -95,15 +108,29 @@ export default {
   z-index: 2;
 }
 
+@media (max-width: 1690px) {
+  .basket {
+    right: 0;
+  }
+}
+
 @media (max-width: 769px) {
   .nav-item:first-child {
     width: auto !important;
   }
 }
 
+@media (max-width: 456px) {
+  .basket {
+    width: 100vw;
+  }
+}
+
 @media (max-width: 453px) {
   .navbar {
     justify-content: center;
+    position: relative;
+    z-index: 30;
 
     &-nav {
       width: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="bestsellers__item">
     <div class="bestsellers__item-icon">
-      <img :src="require(`../static/bestsellers/${bestseller.icon}`)" alt="">
+      <img :src="require(`../static/bestsellers/${bestseller.icon}`)"  :class="{found: found}" alt="">
       <span v-if="bestseller.sale">Sale -{{ bestseller.sale}}%</span>
     </div>
     <div class="bestsellers__item-title">
@@ -31,6 +31,10 @@ export default {
     bestseller: {
       type: Object,
       required: true
+    },
+    found: {
+      type: Boolean,
+      required: true
     }
   },
   methods: {
@@ -48,6 +52,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.found {
+  height: 400px;
+}
 
 .bestsellers__item {
   max-width: 335px;
@@ -111,6 +119,12 @@ export default {
 @media (max-width: 719px) {
   .bestsellers__item:nth-child(3) {
     max-width: 335px;
+  }
+}
+
+@media (max-width: 400px) {
+  .found {
+    height: auto;
   }
 }
 </style>
