@@ -7,7 +7,7 @@
             <p>Search</p>
           </div>
           <div class="search-form__item-option">
-            <input type="text" v-model="search">
+            <input type="text" v-model.trim="search">
             <span v-if="search"><img src="../static/clear.svg" alt="" @click="clearSearch()"></span>
           </div>
         </div>
@@ -73,11 +73,11 @@ export default {
       found: true,
       foundProducts: [],
       bestsellers: [
-        {id: 1, icon: 'kids.png', title: 'Converse Kids 70', price: 49.99, selected: false},
-        {id: 2, icon: 'chuck.png', title: 'Converse Chuck 70', price: 49.99, selected: false},
+        {id: 1, icon: 'kids.webp', title: 'Converse Kids 70', price: 49.99, selected: false},
+        {id: 2, icon: 'chuck.webp', title: 'Converse Chuck 70', price: 49.99, selected: false},
         {
           id: 3,
-          icon: 'chuck-high.png',
+          icon: 'chuck-high.webp',
           title: 'Converse Chuck 70 Renew High Top',
           price: 50.99,
           oldPrice: 84.99,
@@ -86,7 +86,7 @@ export default {
         },
         {
           id: 4,
-          icon: 'pro-chuck.png',
+          icon: 'pro-chuck.webp',
           title: 'Converse Pro Chuck 80',
           price: 64.99,
           oldPrice: 99.99,
@@ -95,15 +95,15 @@ export default {
         },
         {
           id: 5,
-          icon: 'winter.png',
+          icon: 'winter.webp',
           title: 'Converse Winter Chuck 70',
           price: 79.99,
           oldPrice: 99.99,
           sale: 20,
           selected: false
         },
-        {id: 6, icon: 'winter-black.png', title: 'Converse Winter Chuck 70 Full Black', price: 129.99, selected: false},
-        {id: 7, icon: 'winter-white.png', title: 'Converse Winter Chuck 70 Black/White', price: 99.99, selected: false},
+        {id: 6, icon: 'winter-black.webp', title: 'Converse Winter Chuck 70 Full Black', price: 129.99, selected: false},
+        {id: 7, icon: 'winter-white.webp', title: 'Converse Winter Chuck 70 Black/White', price: 99.99, selected: false},
       ],
       categories: [
         {id: 1, value: 'Sneakers'},
