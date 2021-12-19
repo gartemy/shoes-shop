@@ -128,7 +128,7 @@ export default {
   },
   methods: {
     searchProduct() {
-      this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+      this.foundProducts = this.bestsellers.filter(item => item.title.trim().toLowerCase().includes(this.search.toLowerCase()))
       if (!this.foundProducts.length) {
         this.found = false
       }
