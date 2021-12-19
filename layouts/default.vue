@@ -23,6 +23,13 @@ export default {
   padding: 0;
 }
 
+#app {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -56,7 +63,6 @@ button {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 15px;
-
 }
 
 .navbar {

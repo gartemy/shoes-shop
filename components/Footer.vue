@@ -33,6 +33,7 @@ export default {
 <style lang="scss" scoped>
 
 .footer {
+  margin-top: auto;
   background-color: #1B1B1B;
 
   .navbar {

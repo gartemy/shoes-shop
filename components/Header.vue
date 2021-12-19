@@ -4,7 +4,7 @@
     <div class="container">
       <nav class="navbar" :class="{border: isOpen}">
         <nuxt-link :to="'/'" class="navbar-brand">
-          <img src="../static/logo.png" alt="">
+          <img src="../static/logo.png" alt="" @click="reloadPage()">
         </nuxt-link>
 
         <ul class="navbar-nav flex-row justify-content-end">
@@ -54,6 +54,9 @@ export default {
         document.querySelector('html').style.overflow = 'auto'
       }
     },
+    reloadPage() {
+      window.location.reload()
+    }
   }
 }
 </script>

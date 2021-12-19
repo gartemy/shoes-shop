@@ -2,7 +2,6 @@
   <main class="catalog">
     <div class="container">
       <div class="search-form">
-
         <div class="search-form__item">
           <div class="search-form__item-title">
             <p>Search</p>
@@ -18,7 +17,7 @@
             <p>Product category</p>
           </div>
           <div class="search-form__item-option">
-            <select class="select">
+            <select>
               <option v-for="category in categories" :key="category.id" :value="category.value">
                 {{ category.value }}
               </option>
@@ -46,10 +45,16 @@
         </div>
       </div>
 
-      <div class="bestsellers" :class="{found: found}">
-        <h1>Bestsellers: 34</h1>
-        <div class="bestsellers__items">
-          <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller" :found="found"></bestseller>
+      <div class="bestsellers" :class="{found: foundProducts.length }">
+        <div v-if="found" class="bestsellers__content">
+          <h1>Bestsellers: 34</h1>
+          <div class="bestsellers__items">
+            <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller" :found="foundProducts.length"></bestseller>
+          </div>
+        </div>
+        <div class="not-found" v-else>
+          <h1>НЕТ СООТВЕТСТВУЮЩИХ ТОВАРОВ</h1>
+          <p>К сожалению, по Вашему запросу ничего не найдено</p>
         </div>
       </div>
     </div>
@@ -65,8 +70,8 @@ export default {
   data() {
     return {
       search: '',
+      found: true,
       foundProducts: [],
-      found: false,
       bestsellers: [
         {id: 1, icon: 'kids.png', title: 'Converse Kids 70', price: 49.99, selected: false},
         {id: 2, icon: 'chuck.png', title: 'Converse Chuck 70', price: 49.99, selected: false},
@@ -115,7 +120,7 @@ export default {
   computed: {
     getBestsellers() {
       if (!this.foundProducts.length) {
-        return this.foundProducts = this.bestsellers
+        return this.bestsellers
       } else {
         return this.foundProducts
       }
@@ -123,24 +128,35 @@ export default {
   },
   methods: {
     searchProduct() {
-      this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search))
+      this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
       if (!this.foundProducts.length) {
         this.found = false
-      } else {
-        this.found = true
       }
       return this.foundProducts
     },
     clearSearch() {
       this.search = ''
-      this.found = false
-      this.foundProducts = this.bestsellers
+      this.found = true
+      this.foundProducts = []
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.not-found {
+  text-align: center;
+
+  h1 {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+}
 
 .found {
 
@@ -192,6 +208,7 @@ export default {
         width: 100%;
         height: 61px;
         appearance: none;
+        cursor: pointer;
       }
 
       span {
@@ -210,14 +227,17 @@ export default {
 }
 
 .bestsellers {
-  padding: 120px 0 60px 0;
   position: relative;
+  padding: 120px 0 60px 0;
 
-  h1 {
-    max-width: 289px;
-    position: absolute;
-    font-size: 2.5rem;
-    text-transform: uppercase;
+  &__content {
+
+    h1 {
+      max-width: 289px;
+      position: absolute;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
   }
 
   &__items {
