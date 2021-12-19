@@ -7,7 +7,7 @@
             <p>Search</p>
           </div>
           <div class="search-form__item-option">
-            <input type="text" v-model="search">
+            <input type="text" v-model.trim="search">
             <span v-if="search"><img src="../static/clear.svg" alt="" @click="clearSearch()"></span>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default {
   },
   methods: {
     searchProduct() {
-      this.foundProducts = this.bestsellers.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+      this.foundProducts = this.bestsellers.filter(item => item.title.trim().toLowerCase().includes(this.search.toLowerCase()))
       if (!this.foundProducts.length) {
         this.found = false
       }
