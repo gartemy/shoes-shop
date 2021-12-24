@@ -49,7 +49,8 @@
         <div v-if="found" class="bestsellers__content">
           <h1>Bestsellers: 34</h1>
           <div class="bestsellers__items">
-            <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller" :found="foundProducts.length"></bestseller>
+            <bestseller v-for="bestseller in getBestsellers" :key="bestseller.id" :bestseller="bestseller"
+                        :found="foundProducts.length"></bestseller>
           </div>
         </div>
         <div class="not-found" v-else>
@@ -102,8 +103,20 @@ export default {
           sale: 20,
           selected: false
         },
-        {id: 6, icon: 'winter-black.webp', title: 'Converse Winter Chuck 70 Full Black', price: 129.99, selected: false},
-        {id: 7, icon: 'winter-white.webp', title: 'Converse Winter Chuck 70 Black/White', price: 99.99, selected: false},
+        {
+          id: 6,
+          icon: 'winter-black.webp',
+          title: 'Converse Winter Chuck 70 Full Black',
+          price: 129.99,
+          selected: false
+        },
+        {
+          id: 7,
+          icon: 'winter-white.webp',
+          title: 'Converse Winter Chuck 70 Black/White',
+          price: 99.99,
+          selected: false
+        },
       ],
       categories: [
         {id: 1, value: 'Sneakers'},
@@ -128,11 +141,13 @@ export default {
   },
   methods: {
     searchProduct() {
-      this.foundProducts = this.bestsellers.filter(item => item.title.trim().toLowerCase().includes(this.search.toLowerCase()))
-      if (!this.foundProducts.length) {
-        this.found = false
+      if (this.search != '') {
+        this.foundProducts = this.bestsellers.filter(item => item.title.trim().toLowerCase().includes(this.search.toLowerCase()))
+        if (!this.foundProducts.length) {
+          this.found = false
+        }
+        return this.foundProducts
       }
-      return this.foundProducts
     },
     clearSearch() {
       this.search = ''
@@ -166,7 +181,7 @@ export default {
   }
 
   div {
-    padding-top: 0!important;
+    padding-top: 0 !important;
   }
 
 }
