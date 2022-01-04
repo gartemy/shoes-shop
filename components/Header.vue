@@ -107,11 +107,11 @@ export default {
   width: 455px;
   position: absolute;
   top: 0;
-  right: 6.4%;
+  right: -3%;
   z-index: 2;
 }
 
-@media (max-width: 1690px) {
+@media (max-width: 1540px) {
   .basket {
     right: 0;
   }
