@@ -1,69 +1,27 @@
-# shoes-shop
+<h1 align="center">Shoes Shop</h1>
 
-## Build Setup
+<p align="center">
+  <img src="https://img.shields.io/badge/node-14.17.4-brightgreen.svg">
+  <img src="https://img.shields.io/badge/vue-2.6.14-green.svg">
+  <img src="https://img.shields.io/badge/nuxt-2.15.8-success.svg">
+  <img src="https://img.shields.io/github/languages/top/gartemy/shoes-shop.svg">
+</p>
 
-```bash
-# install dependencies
-$ npm install
+<p align="center">
+Клиентская часть интернет-магазина кроссовок
+</p>
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+<h2>Внешний вид</h2>
+<p align="center">
+ <img align="center" src="https://github.com/gartemy/shoes-shop/blob/master/static/example/interface.gif">
+</p>
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+<h2>Добавление в корзину</h2>
+<p align="center">
+ <img align="center" src="https://github.com/gartemy/shoes-shop/blob/master/static/example/basket.gif">
+</p>
 
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+<h2>Поиск товаров</h2>
+<p align="center">
+ <img align="center" src="https://github.com/gartemy/shoes-shop/blob/master/static/example/searching.gif">
+</p>
